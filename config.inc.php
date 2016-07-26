@@ -24,14 +24,17 @@ $cfg['blowfish_secret'] = ''; /* YOU MUST FILL IN THIS FOR COOKIE AUTH! */
  * Servers
  */
 $hosts = array(
-    1 => array('host' => 'www.szjlxh.com', 'user' => '', 'password' => ''),
-    2 => array('host' => 'www.sshmt.com', 'user' => '', 'password' => ''),
+    1 => array('host' => 'www.sshmt.com', 'user' => '', 'password' => ''),
+    // 2 => array('host' => 'www.szjlxh.com', 'user' => 'read', 'password' => 'read'),
 );
 for ($i = 1; $i <= count($hosts); $i++) {
-    /* Authentication type */
-    $cfg['Servers'][$i]['auth_type'] = 'cookie';
-    /* Server parameters */
-    $cfg['Servers'][$i]['connect_type'] = 'tcp';
+
+    // auth_type
+    // 'config': use the following username and password to auto login
+    // 'cookie': require user to fill in username and password
+    $cfg['Servers'][$i]['auth_type'] = 'config';
+    $cfg['Servers'][$i]['extension'] = 'mysqli';
+    $cfg['Servers'][$i]['connect_type'] = 'socket';
     $cfg['Servers'][$i]['compress'] = false;
     $cfg['Servers'][$i]['AllowNoPassword'] = false;
     $cfg['Servers'][$i]['host'] = $hosts[$i]['host'];
@@ -39,6 +42,7 @@ for ($i = 1; $i <= count($hosts); $i++) {
     $cfg['Servers'][$i]['password'] = $hosts[$i]['password'];
 }
 
+$cfg['ServerDefault'] = 1;
 /**
  * phpMyAdmin configuration storage settings.
  */
@@ -122,7 +126,7 @@ $cfg['SaveDir'] = '';
  * uncomment the desired line:
  * default = 'en'
  */
-//$cfg['DefaultLang'] = 'en';
+$cfg['DefaultLang'] = 'zh';
 //$cfg['DefaultLang'] = 'de';
 
 /**
