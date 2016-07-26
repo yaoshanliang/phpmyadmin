@@ -1,4 +1,8 @@
 <?php
+
+// UCenter授权
+require_once('ucenter_login.php');
+
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
  * Main loader script
