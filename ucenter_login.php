@@ -9,6 +9,8 @@ define('UCENTER_HOME', 'http://ucenter.szjlxh.com');//用户中心地址
 define('UCENTER_OAUTH', UCENTER_HOME . '/oauth');
 define('UCENTER_API', UCENTER_HOME . '/api');
 
+define('SUCCESS', 0);
+
 session_start();
 
 if (isset($_GET['code'])){
@@ -29,7 +31,7 @@ function ucenter_oauth() {
         'redirect_uri' => REDIRECT_URI,
         'code' => $_GET['code']);
     $data = json_decode(ucenter_curl($url, 'POST', $data), true);
-    if(1 !== $data['code']) {
+    if(SUCCESS !== $data['code']) {
         exit('授权失败');
     }
     $access_token = $data['data']['access_token'];

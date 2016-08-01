@@ -24,8 +24,7 @@ $cfg['blowfish_secret'] = ''; /* YOU MUST FILL IN THIS FOR COOKIE AUTH! */
  * Servers
  */
 $hosts = array(
-    1 => array('host' => 'www.sshmt.com', 'user' => '', 'password' => ''),
-    // 2 => array('host' => 'www.szjlxh.com', 'user' => 'read', 'password' => 'read'),
+    1 => array('host' => 'localhost', 'user' => 'root', 'password' => ''),
 );
 for ($i = 1; $i <= count($hosts); $i++) {
 
@@ -34,7 +33,7 @@ for ($i = 1; $i <= count($hosts); $i++) {
     // 'cookie': require user to fill in username and password
     $cfg['Servers'][$i]['auth_type'] = 'config';
     $cfg['Servers'][$i]['extension'] = 'mysqli';
-    $cfg['Servers'][$i]['connect_type'] = 'socket';
+    $cfg['Servers'][$i]['connect_type'] = 'http';
     $cfg['Servers'][$i]['compress'] = false;
     $cfg['Servers'][$i]['AllowNoPassword'] = false;
     $cfg['Servers'][$i]['host'] = $hosts[$i]['host'];
